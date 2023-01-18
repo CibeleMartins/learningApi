@@ -8,7 +8,7 @@ public class User {
 
     private String email;
     
-    private String password;
+    private Long password;
 
     public Integer getId() {
         return id;
@@ -34,11 +34,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
+    public Long getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(Long password) {
         this.password = password;
     }
 

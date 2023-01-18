@@ -19,7 +19,7 @@ import br.com.learning.learningapijava.model.User;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
     
     @Autowired
@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(Integer id) {
+    public String deleteUser(@PathVariable Integer id) {
 
         userService.deleteUser(id);
 
