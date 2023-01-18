@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import br.com.learning.learningapijava.model.User;
+import br.com.learning.learningapijava.model.exception.ResourceNotFoundException;
 
 @Repository
 public class UserRepository {
@@ -25,7 +26,14 @@ public class UserRepository {
 
     public Optional<User> getUserById(Integer id) {
 
-       return userBd.stream().filter(user -> user.getId() == id).findFirst();
+        Optional<User> haveUserId = userBd.stream().filter(user -> user.getId() == id).findFirst();
+
+        if(haveUserId.isEmpty()) {
+
+            throw new ResourceNotFoundException("Usuário não encontrado.");
+        }
+
+        return haveUserId;
 
     }
 
@@ -46,7 +54,7 @@ public class UserRepository {
 
         if (haveUser.isEmpty()) {
 
-            throw new InputMismatchException("Usuário não encontrado.");
+            throw new ResourceNotFoundException("Usuário não encontrado.");
         }
 
         deleteUser(user.getId());
