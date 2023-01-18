@@ -10,7 +10,7 @@ public class  AnnotationUser {
 
     private String description;
 
-    private String text;
+    private String annotation;
 
     public Integer getId() {
         return id;
@@ -44,12 +44,12 @@ public class  AnnotationUser {
         this.description = description;
     }
 
-    public String getText() {
-        return text;
+    public String getAnnotation() {
+        return annotation;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setAnnotation(String annotation) {
+        this.annotation = annotation;
     }
 
    
