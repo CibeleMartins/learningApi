@@ -42,7 +42,7 @@ public class UserRepository {
         return user;
     }
 
-    private User updateUser(User user) {
+    public User updateUser(User user) {
 
         Optional<User> haveUser = getUserById(user.getId());
 
