@@ -54,7 +54,7 @@ public class UserRepository {
 
         if (haveUser.isEmpty()) {
 
-            throw new ResourceNotFoundException("Usuário não encontrado.");
+            throw new ResourceNotFoundException("Não é possível atualizar um usuário não existente.");
         }
 
         deleteUser(user.getId());
@@ -65,6 +65,13 @@ public class UserRepository {
 
     public void deleteUser(Integer id) {
 
-        userBd.removeIf(user -> user.getId() == id);
+        // userBd.removeIf(user -> user.getId() == id);
+
+        Optional<User> haveUser = userBd.stream().filter(user -> user.getId() == id).findFirst();
+
+        if (haveUser.isEmpty()){
+
+            throw new ResourceNotFoundException("Não é possível deletar um usuário não existente.");
+        }
     }
 }
