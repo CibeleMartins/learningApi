@@ -5,8 +5,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.stereotype.Repository;
 
 import br.com.learning.learningapijava.model.User;

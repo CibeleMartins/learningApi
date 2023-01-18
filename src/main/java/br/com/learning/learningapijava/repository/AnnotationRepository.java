@@ -40,7 +40,7 @@ public class AnnotationRepository {
         return annotation;
     }
 
-    private AnnotationUser updateAnnotation(AnnotationUser annotation) {
+    public AnnotationUser updateAnnotation(AnnotationUser annotation) {
 
         Optional<AnnotationUser> haveUser = getAnnotationById(annotation.getId());
 
