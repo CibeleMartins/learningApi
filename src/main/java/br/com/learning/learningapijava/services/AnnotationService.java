@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.learning.learningapijava.repository.AnnotationRepository;
 import br.com.learning.learningapijava.repository.AnnotationRepository_old;
 
 import br.com.learning.learningapijava.model.AnnotationUser;
@@ -13,22 +14,23 @@ import br.com.learning.learningapijava.model.AnnotationUser;
 public class AnnotationService {
 
     @Autowired
-    private AnnotationRepository_old annotationUserRepository;
+    private AnnotationRepository annotationUserRepository;
 
     public List<AnnotationUser> getAllAnnotationUsers() {
 
-        return annotationUserRepository.getAllAnnotations();
+        return annotationUserRepository.findAll();
     }
 
     public Optional<AnnotationUser> getAnnotationUserById(Integer id) {
 
-        return annotationUserRepository.getAnnotationById(id);
+        return annotationUserRepository.findById(id);
 
     }
 
     public String registerAnnotationUser(AnnotationUser AnnotationUser) {
 
-        annotationUserRepository.registerAnnotation(AnnotationUser);
+        AnnotationUser.setId(null);
+        annotationUserRepository.save(AnnotationUser);
 
         return "Anotação cadastrada com sucesso.";
     }
@@ -37,13 +39,13 @@ public class AnnotationService {
 
         AnnotationUser.setId(id);
 
-        annotationUserRepository.updateAnnotation(AnnotationUser);
+        annotationUserRepository.save(AnnotationUser);
         return "Anotação atualizada com sucesso.";
     }
 
     public String deleteAnnotationUser(Integer id) {
 
-        annotationUserRepository.deleteAnnotation(id);
+        annotationUserRepository.deleteById(id);
 
         return "Anotação deletada com sucesso.";
     }
