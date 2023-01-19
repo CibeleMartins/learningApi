@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import br.com.learning.learningapijava.model.AnnotationUser;
 
 @Repository
-public class AnnotationRepository {
+public class AnnotationRepository_old {
 
     List<AnnotationUser> annotationBd = new ArrayList<AnnotationUser>(); 
     Integer annotationUserId = 0;
