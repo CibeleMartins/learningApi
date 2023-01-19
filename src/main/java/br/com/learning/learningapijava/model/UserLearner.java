@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class UserLearner {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class User {
 
     private String email;
     
-    private Long password;
+    private String password;
 
     public Integer getId() {
         return id;
@@ -42,11 +42,11 @@ public class User {
         this.email = email;
     }
 
-    public Long getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

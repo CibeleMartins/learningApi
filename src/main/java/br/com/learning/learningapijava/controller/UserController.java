@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.learning.learningapijava.services.UserService;
-import br.com.learning.learningapijava.model.User;
+import br.com.learning.learningapijava.model.UserLearner;
 
 
 
@@ -26,20 +26,20 @@ public class UserController {
     private UserService userService;
     
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserLearner> getAllUsers() {
 
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Integer id) {
+    public Optional<UserLearner> getUserById(@PathVariable Integer id) {
 
        return userService.getUserById(id);
 
     }
 
     @PostMapping
-    public String registerUser(@RequestBody User user) {
+    public String registerUser(@RequestBody UserLearner user) {
 
         userService.registerUser(user);
 
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable Integer id, @RequestBody User user) {
+    public String updateUser(@PathVariable Integer id, @RequestBody UserLearner user) {
 
         userService.updateUser(id,user);
         return "Usuário atualizado com sucesso.";

@@ -5,30 +5,30 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.learning.learningapijava.model.User;
-import br.com.learning.learningapijava.repository.UserRepository;
-import br.com.learning.learningapijava.repository.UserRepository_old;
+import br.com.learning.learningapijava.model.UserLearner;
+import br.com.learning.learningapijava.repository.UserLearnerRepository;
+// import br.com.learning.learningapijava.repository.UserRepository_old;
 
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserLearnerRepository userRepository;
     
-    public List<User> getAllUsers() {
+    public List<UserLearner> getAllUsers() {
 
         return userRepository.findAll();
     }
 
 
-    public Optional<User> getUserById(Integer id) {
+    public Optional<UserLearner> getUserById(Integer id) {
 
        return userRepository.findById(id);
 
     }
 
-    public String registerUser(User user) {
+    public String registerUser(UserLearner user) {
 
         user.setId(null);
         userRepository.save(user);
@@ -36,7 +36,7 @@ public class UserService {
         return "Usuário cadastrado com sucesso.";
     }
 
-    public String updateUser(Integer id,User user) {
+    public String updateUser(Integer id,UserLearner user) {
 
         user.setId(id);
 
