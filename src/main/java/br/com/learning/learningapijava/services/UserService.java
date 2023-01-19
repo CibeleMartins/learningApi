@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.learning.learningapijava.model.User;
+import br.com.learning.learningapijava.repository.UserRepository;
 import br.com.learning.learningapijava.repository.UserRepository_old;
 
 
@@ -13,23 +14,24 @@ import br.com.learning.learningapijava.repository.UserRepository_old;
 public class UserService {
 
     @Autowired
-    private UserRepository_old userRepository;
+    private UserRepository userRepository;
     
     public List<User> getAllUsers() {
 
-        return userRepository.getAllUsers();
+        return userRepository.findAll();
     }
 
 
     public Optional<User> getUserById(Integer id) {
 
-       return userRepository.getUserById(id);
+       return userRepository.findById(id);
 
     }
 
     public String registerUser(User user) {
 
-        userRepository.registerUser(user);
+        user.setId(null);
+        userRepository.save(user);
 
         return "Usuário cadastrado com sucesso.";
     }
@@ -38,13 +40,13 @@ public class UserService {
 
         user.setId(id);
 
-        userRepository.updateUser(user);
+        userRepository.save(user);
         return "Usuário atualizado com sucesso.";
     }
 
     public String deleteUser(Integer id) {
 
-        userRepository.deleteUser(id);
+        userRepository.deleteById(id);
 
         return "Usuário deletado com sucesso.";
     }
