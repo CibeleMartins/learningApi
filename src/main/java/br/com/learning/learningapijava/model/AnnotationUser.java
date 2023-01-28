@@ -20,6 +20,8 @@ public class  AnnotationUser {
 
     private String annotation;
 
+    private String color;
+
     public Integer getId() {
         return id;
     }
