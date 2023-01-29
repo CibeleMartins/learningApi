@@ -10,8 +10,8 @@ import jakarta.persistence.SequenceGenerator;
 public class  AnnotationUser {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id")
-	@SequenceGenerator(name="seq_eq_id", sequenceName="seq_eq_id", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id_annotation")
+	@SequenceGenerator(name="seq_eq_id_annotation", sequenceName="seq_eq_id_annotation", allocationSize=1)
     private Integer id;
 
     private String title;
