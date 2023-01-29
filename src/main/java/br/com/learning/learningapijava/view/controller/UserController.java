@@ -33,6 +33,9 @@ public class UserController {
     
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ModelMapper mapper;
     
     @GetMapping
     public ResponseEntity<List<UserLearnerResponse>> getAllUsers() {
