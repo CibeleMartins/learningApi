@@ -1,4 +1,4 @@
-package br.com.learning.learningapijava.controller;
+package br.com.learning.learningapijava.view.controller;
 
 import java.util.List;
 import java.util.Optional;
