@@ -20,13 +20,17 @@ public class UserService {
 
     @Autowired
     private UserLearnerRepository userRepository;
+
+    @Autowired
+    private ModelMapper mapper;
+    
     
     public List<UserDTO> getAllUsers() {
 
         // return a list of users
         List<UserLearner> users = userRepository.findAll();
 
-        return users.stream().map(u -> new ModelMapper().map(u, UserDTO.class)).collect(Collectors.toList());
+        return users.stream().map(u -> mapper.map(u, UserDTO.class)).collect(Collectors.toList());
     }
 
 
@@ -41,7 +45,7 @@ public class UserService {
        }
 
     //    transform user model in DTO (get user model optional with method get())
-       UserDTO userDto = new ModelMapper().map(user.get(), UserDTO.class);
+       UserDTO userDto = mapper.map(user.get(), UserDTO.class);
 
     //    return a optional of() -> userDto
        return Optional.of(userDto);
@@ -54,7 +58,7 @@ public class UserService {
         userDto.setId(null);
 
         // create object mapping
-        ModelMapper mapper = new ModelMapper();
+        // ModelMapper mapper = new ModelMapper();
 
         // convert user DTO in user model
         UserLearner userModel = mapper.map(userDto, UserLearner.class);
@@ -74,7 +78,7 @@ public class UserService {
         userDto.setId(id);
 
         // create object mapping
-        ModelMapper mapper = new ModelMapper();
+        // ModelMapper mapper = new ModelMapper();
 
         // convert user DTO em user Model
         UserLearner userModel = mapper.map(userDto, UserLearner.class);

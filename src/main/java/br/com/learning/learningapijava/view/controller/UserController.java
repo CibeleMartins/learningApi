@@ -42,7 +42,7 @@ public class UserController {
 
         List<UserDTO> usersDtos = userService.getAllUsers();
 
-        ModelMapper mapper = new ModelMapper();
+        // ModelMapper mapper = new ModelMapper();
 
         List<UserLearnerResponse> usersResponse = usersDtos.stream().map(uDto -> mapper.map(uDto,UserLearnerResponse.class)).collect(Collectors.toList());
 
@@ -54,14 +54,14 @@ public class UserController {
 
       Optional<UserDTO> userDtoExists = userService.getUserById(id);
 
-      UserLearnerResponse userResponse = new ModelMapper().map(userDtoExists.get(), UserLearnerResponse.class);
+      UserLearnerResponse userResponse = mapper.map(userDtoExists.get(), UserLearnerResponse.class);
         
       return new ResponseEntity<>(Optional.of(userResponse), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<UserLearnerResponse> registerUser(@RequestBody UserLearnerRequest userReq) {
-        ModelMapper mapper = new ModelMapper();
+        // ModelMapper mapper = new ModelMapper();
 
         UserDTO userDto = mapper.map(userReq, UserDTO.class);
 
@@ -75,7 +75,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserLearnerResponse> updateUser(@PathVariable Integer id, @RequestBody UserLearnerRequest userReq) {
         
-        ModelMapper mapper = new ModelMapper();
+        // ModelMapper mapper = new ModelMapper();
 
         UserDTO userDto =  mapper.map(userReq, UserDTO.class);    
 
