@@ -2,8 +2,14 @@ package br.com.learning.learningapijava.view.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import javax.print.DocFlavor.STRING;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.learning.learningapijava.services.UserService;
+import br.com.learning.learningapijava.shared.UserDTO;
+import br.com.learning.learningapijava.view.model.UserLearnerRequest;
+import br.com.learning.learningapijava.view.model.UserLearnerResponse;
 import br.com.learning.learningapijava.model.UserLearner;
 
 
@@ -26,39 +35,60 @@ public class UserController {
     private UserService userService;
     
     @GetMapping
-    public List<UserLearner> getAllUsers() {
+    public ResponseEntity<List<UserLearnerResponse>> getAllUsers() {
 
-        return userService.getAllUsers();
+        List<UserDTO> usersDtos = userService.getAllUsers();
+
+        ModelMapper mapper = new ModelMapper();
+
+        List<UserLearnerResponse> usersResponse = usersDtos.stream().map(uDto -> mapper.map(uDto,UserLearnerResponse.class)).collect(Collectors.toList());
+
+        return new ResponseEntity<>(usersResponse, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<UserLearner> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<Optional<UserLearnerResponse>> getUserById(@PathVariable Integer id) {
 
-       return userService.getUserById(id);
+      Optional<UserDTO> userDtoExists = userService.getUserById(id);
 
+      UserLearnerResponse userResponse = new ModelMapper().map(userDtoExists.get(), UserLearnerResponse.class);
+        
+      return new ResponseEntity<>(Optional.of(userResponse), HttpStatus.OK);
     }
 
     @PostMapping
-    public String registerUser(@RequestBody UserLearner user) {
+    public ResponseEntity<UserLearnerResponse> registerUser(@RequestBody UserLearnerRequest userReq) {
+        ModelMapper mapper = new ModelMapper();
 
-        userService.registerUser(user);
+        UserDTO userDto = mapper.map(userReq, UserDTO.class);
 
-        return "Usuário cadastrado com sucesso.";
+        userDto =  userService.registerUser(userDto);
+
+        UserLearnerResponse userResponse = mapper.map(userDto, UserLearnerResponse.class);
+
+        return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable Integer id, @RequestBody UserLearner user) {
+    public ResponseEntity<UserLearnerResponse> updateUser(@PathVariable Integer id, @RequestBody UserLearnerRequest userReq) {
+        
+        ModelMapper mapper = new ModelMapper();
 
-        userService.updateUser(id,user);
-        return "Usuário atualizado com sucesso.";
+        UserDTO userDto =  mapper.map(userReq, UserDTO.class);    
+
+        userDto = userService.updateUser(id, userDto);
+
+        UserLearnerResponse userResponse = mapper.map(userDto,UserLearnerResponse.class);
+
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
 
         userService.deleteUser(id);
 
-        return "Usuário deletado com sucesso.";
+        return new ResponseEntity<String>("Usuário deletado com sucesso", HttpStatus.OK);
     }
 
 
