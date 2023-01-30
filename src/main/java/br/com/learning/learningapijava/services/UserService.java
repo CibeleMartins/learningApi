@@ -74,6 +74,11 @@ public class UserService {
 
     public UserDTO updateUser(Integer id,UserDTO userDto) {
 
+        Optional<UserLearner> userModelExistis = userRepository.findById(id);
+
+        if(userModelExistis.isEmpty()) {
+            throw new ResourceNotFoundException("O usuário que deseja atualizar não existe.");
+        }
         // pass id in user DTO
         userDto.setId(id);
 
