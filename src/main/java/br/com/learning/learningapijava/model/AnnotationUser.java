@@ -1,16 +1,20 @@
 package br.com.learning.learningapijava.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+// import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+
 
 @Entity
 public class  AnnotationUser {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id_annotation")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id_annotation") 
 	@SequenceGenerator(name="seq_eq_id_annotation", sequenceName="seq_eq_id_annotation", allocationSize=1)
     private Integer id;
 
@@ -24,16 +28,9 @@ public class  AnnotationUser {
 
     private String color;
 
+
     public Integer getId() {
         return id;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public void setId(Integer id) {
@@ -70,6 +67,14 @@ public class  AnnotationUser {
 
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
    

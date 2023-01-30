@@ -1,5 +1,9 @@
 package br.com.learning.learningapijava.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +14,7 @@ import jakarta.persistence.SequenceGenerator;
 public class UserLearner {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_eq_id") 
 	@SequenceGenerator(name="seq_eq_id", sequenceName="seq_eq_id", allocationSize=1)
     private Integer id;
 
@@ -19,6 +23,7 @@ public class UserLearner {
     private String email;
     
     private String password;
+
 
     public Integer getId() {
         return id;
