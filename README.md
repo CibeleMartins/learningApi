@@ -72,3 +72,7 @@ Este projeto foi desenvolvido durante o meu estágio de programação com o obje
 ## Desenvolvido por
 
 - [Cibele Martins](https://github.com/CibeleMartins)
+
+## Observações
+
+Este projeto está sujeito à novas implementações. Sinta-se a vontade para explorar todo seu conhecimento utilizando este projeto, qualquer dúvida ou sugestão me procure no <a href='www.linkedin.com/in/cibelemartinssss'>Linkedin</a>.
