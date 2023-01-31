@@ -67,7 +67,7 @@ Este projeto foi desenvolvido durante o meu estágio de programação com o obje
 
 - Agora é só rodar a aplicação no dashboard do Spring Boot 
 
-<img src="./src/main/java/br/com/teste/apirestjava/assets/springRun.png"/>
+<img src="./src/main/java/br/com/learning/learningapijava/assets/springRun.png"/>
 
 ## Desenvolvido por
 
