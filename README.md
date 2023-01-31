@@ -25,7 +25,7 @@ Este projeto foi iniciado com [Spring Boot](https://start.spring.io/).
 
 ## Sobre
 
-Este projeto foi desenvolvido durante o meu estágio de programação com o objetivo de praticar e fixar o aprendizado aplicado neste repositório: [][Java Rest Api](https://github.com/CibeleMartins/javaApiRest) bem como construir uma API a qual fosse possível fazer a integração com esta aplicão frontend em Angular [Check Learning](https://github.com/CibeleMartins/learningApi). Esta API utilizou das mesmas tecnologias da Java Rest Api, no entanto, o modelo DTO foi aplicado somente na entidade de usuário, pois somente esta entidade deveria ter alguns dados omitidos no momento da resposta das requisiões.
+Este projeto foi desenvolvido durante o meu estágio de programação com o objetivo de praticar e fixar o aprendizado aplicado neste repositório: [Java Rest Api](https://github.com/CibeleMartins/javaApiRest) bem como construir uma API a qual fosse possível fazer a integração com esta aplicação frontend em Angular [Check Learning](https://github.com/CibeleMartins/learningApi). Esta API utilizou das mesmas tecnologias da Java Rest Api, no entanto, o modelo DTO foi aplicado somente na entidade de usuário, pois somente esta entidade deveria ter alguns dados omitidos no momento da resposta das requisições.
 
 ## Conhecimentos Praticados
 
@@ -55,7 +55,7 @@ Este projeto foi desenvolvido durante o meu estágio de programação com o obje
       "args": "",
       "envFile": "${workspaceFolder}/.env",
       "env": {
-        "DB_CHECK_LEARNING_URL": "URL DO BANCO DE DADOS",
+        "DB_URL": "URL DO BANCO DE DADOS",
         "DB_USERNAME": "NOME DE LOGIN NO SEU BANCO DE DADOS",
         "DB_PASSWORD": "SENHA DO SEU BANCO DE DADOS"
       }
