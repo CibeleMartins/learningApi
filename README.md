@@ -46,14 +46,7 @@ Este projeto foi desenvolvido durante o meu estágio de programação com o obje
 {
   "configurations": [
     {
-      "type": "java",
-      "name": "Spring Boot-ApiRestJavaApplication<api-rest-java>",
-      "request": "launch",
-      "cwd": "${workspaceFolder}",
-      "mainClass": "br.com.teste.apirestjava.ApiRestJavaApplication",
-      "projectName": "api-rest-java",
-      "args": "",
-      "envFile": "${workspaceFolder}/.env",
+      ...
       "env": {
         "DB_URL": "URL DO BANCO DE DADOS",
         "DB_USERNAME": "NOME DE LOGIN NO SEU BANCO DE DADOS",
