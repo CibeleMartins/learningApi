@@ -39,9 +39,9 @@ Este projeto foi desenvolvido durante o meu estágio de programação com o obje
 - Abra o projeto no Vs Code
 - Certifique-se de instalar todas as dependências no arquivo pom.xml
 - E de ter instalado essas extensões: Java Extension Pack e Spring Boot Extension Pack.
-- Crie uma pasta .vscode fora da pasta raiz do projeto
-- Crie um arquivo chamado launch.json
-- Dentro deste arquivo insira este trecho de código:
+- Navegue até o dashboard Spring Boot em sua IDE e rode o projeto
+- Você receberá alguns erros, porque precisa definir as variáveis de ambiente do projeto
+- Navegue até .vscode -> launch.json -> Dentro deste arquivo insira este trecho de código:
 ```javascript
 {
   "configurations": [
